@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
+
+@import './modules/_variables.scss';
+@import './modules/_mixins.scss';
+
+html,body{
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+.cursive {
+    font-style: italic;
+}
+img {
+    max-width: 100%;
+}
+
+figure{
+   position: relative;
+   max-height: 100%;
+   margin: 0px;
+   figcaption{
+       @include caption;
+   }
+   img {
+       border-radius: $border-radius;
+   }
+}
+
+
+.full-height{
+    min-height: 100wh;
+}
+
+.btn{
+    padding: $large-padding;
+    position: relative;
+    color: $black !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    &:before {
+        content: '';
+        position: absolute;
+        background-color: $cyan;
+        transition: all 0.15s ease-out;
+        width: 100%;
+        left: 0px;
+        bottom: 0px;
+        height: 35%;
+        z-index: -1;
+    }
+    &:hover::before{
+        height: 100%;
+    }
+}
+
+
+//Areas
+
+.grid-main-area{
+    display: grid;
+    grid-template-columns: repeat(9,1fr);
+    margin-top: $medium-margin-top;
+    margin-bottom: $medium-margin-top;
+    grid-template-areas:
+     " title title title title title title title title title"
+     " image image image image image image image image image";
+     .text{
+         font-weight: 200;
+        grid-area: title;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        h1{
+            font-weight: inherit;
+            font-size: $big;
+            letter-spacing: 0.3em;
+            line-height: 1.5em;
+        }
+    }
+    .image{
+        grid-area: image;
+    }
+}
+.container{
+   grid-column: span 12;
+   padding: $big-padding;
+}
+.cover{
+    @include absolute-cover;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+
+    &.parallax{
+        background-attachment: fixed;
+        background-image: url(../../public/img/2.jpg);
+        position: relative;
+        p {
+            @include caption;
+            background-color: rgba($blue, 0.5);
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            left: 0px;
+            @include text-right;
+            span{
+                display: block;
+                font-size: 0.5em;
+                font-weight: 1200;
+                margin-top: 6px;
+            }
+        }
+    }
+}
+
+//Diseño responsive & Mobilefirst
+
+@media (min-width: 960px){
+    .container{
+        grid-column: 2 / 12;
+    }
+    .grid-main-area{
+        display: grid;
+        grid-template-columns: repeat(9,1fr);
+        grid-template-areas:
+        " title title title . image image image image image";
+    }
+}
+
+
+
+
