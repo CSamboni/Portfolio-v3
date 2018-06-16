@@ -7,13 +7,60 @@ html,body{
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0px;
 }
+img {
+    max-width: 100%;
+}
+
+figure{
+    position: relative;
+    max-height: 100%;
+    margin: 0px;
+    figcaption{
+        @include caption;
+    }
+    img {
+        border-radius: $border-radius;
+    }
+ }
+
+.cursive {
+    font-style: italic;
+}
+
+.full-height{
+    min-height: 100wh;
+}
+
+.btn{
+    padding: $large-padding;
+    position: relative;
+    color: $black !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    &:before {
+        content: '';
+        position: absolute;
+        background-color: $cyan;
+        transition: all 0.15s ease-out;
+        width: 100%;
+        left: 0px;
+        bottom: 0px;
+        height: 35%;
+        z-index: -1;
+    }
+    &:hover::before{
+        height: 100%;
+    }
+}
+
 figure:hover{}
 
 .grid{
     display: grid;
     grid-template-columns: repeat(12,1fr);
 }
-
 .menu {
     position: fixed;
     top: 2em;
@@ -31,7 +78,6 @@ figure:hover{}
         height: 60px;
     }
 }
-
 .menu-screen {
     background-color: white;
     height: 100vh;
@@ -98,54 +144,6 @@ figure:hover{}
         }
     }
 }
-.cursive {
-    font-style: italic;
-}
-img {
-    max-width: 100%;
-}
-
-figure{
-   position: relative;
-   max-height: 100%;
-   margin: 0px;
-   figcaption{
-       @include caption;
-   }
-   img {
-       border-radius: $border-radius;
-   }
-}
-
-
-.full-height{
-    min-height: 100wh;
-}
-
-.btn{
-    padding: $large-padding;
-    position: relative;
-    color: $black !important;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-sizing: border-box;
-    &:before {
-        content: '';
-        position: absolute;
-        background-color: $cyan;
-        transition: all 0.15s ease-out;
-        width: 100%;
-        left: 0px;
-        bottom: 0px;
-        height: 35%;
-        z-index: -1;
-    }
-    &:hover::before{
-        height: 100%;
-    }
-}
-
 
 //Areas
 
@@ -238,14 +236,14 @@ figure{
             text-align: right;
             padding-right: 150px;
             position: relative;
-            &::After {
+            &::after {
                 position: absolute;
                 content: '';
                 height: 3px;
                 width: 140px;
                 background-color: $white;
                 top: 0.7em;
-                right: 0xp;
+                right: 0px;
 
             }
         }
@@ -270,30 +268,32 @@ figure{
 
 .legado {
     align-items: center;
-    .container {
-        @include main-text;
-        font-size: 1.1em;
-        figure {
-            float: right;
-        }
-        p {
-            line-height: 1.8em;
-            &:nth-of-type(1){
-                margin-bottom: 3em;
-                position: relative;
-
-                &::after {
-                   content: '';
-                   background-color: $teal;
-                   position: absolute;
-                   bottom:-1.5em;
-                   height: 5px;
-                   width: 80%;
-                   z-index: -1;
-                }
-            }
-        }
+  .container{
+    @include main-text;
+    font-size: 1.1em;
+    figure{
+      float: right;
+      margin-left: 20px;
     }
+    p{
+      line-height: 2em;
+      &:nth-of-type(1){
+        margin-bottom: 3em;
+        position: relative;
+
+        &::after{
+          content: '';
+          background-color: $blue;
+          position: absolute;
+          bottom: -1.5em;
+          height: 5px;
+          width: 70%;
+          z-index: -1;
+        }
+      }
+    }
+
+  }
 }
 #mapa {
   width: 100%;
@@ -317,6 +317,14 @@ figure{
         margin: 1em auto;
     }
 
+}
+
+.footerf {
+     @include text-center;
+     p.footer {
+         font-weight: 200;
+         font-size: 2.5em;
+     }
 }
 //Diseño responsive & Mobilefirst
 
