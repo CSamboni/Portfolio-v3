@@ -7,7 +7,37 @@
         <title>CSamboni | Fro-Dev</title>
     </head>
     <body>
-        <section>
+        <div class="menu">
+            <img src="../public/img/menu.svg" alt="menu">
+        </div>
+        <div class="menu-screen">
+            <a href="#" class="exit">
+                <img src="../public/img/exit.svg" alt="exit">
+            </a>
+            <nav>
+                <a href="#inicio">
+                    <span class="main">Inicio</span>
+                    <span>Quién soy?</span>
+                </a>
+                <a href="#proyectos">
+                    <span class="main">Proyectos</span>
+                    <span>Mi vida. Mi trabajo.</span>
+                </a>
+                <a href="#legado">
+                    <span class="main">Legado</span>
+                    <span>Un simple recuerdo.</span>
+                </a>
+                <a href="#map">
+                    <span class="main">Mi Ciudad</span>
+                    <span>Conoce dónde vivo.</span>
+                </a>
+                <a href="#contacto">
+                    <span class="main">Contáctame</span>
+                    <span>Cuéntame tus ideas.</span>
+                </a>
+            </nav>
+        </div>
+        <section id="inicio">
             <div class="grid">
                 <div class="container">
                     <div class="grid-main-area">
@@ -41,12 +71,18 @@
         </div>
     </section>
 
-    <section>
+    <section id="proyectos">
         <div class="grid-main-area slider">
             <div class="text">
                 <div class="controls">
-                    <img src="../public/img/right-arrow.svg" class="left-arrow" alt="Flecha a la izquierda">
-                    <img src="../public/img/right-arrow.svg" class="right-arrow" alt="Flecha a la derecha">
+                    <img
+                        src="../public/img/right-arrow.svg"
+                        class="left-arrow"
+                        alt="Flecha a la izquierda">
+                    <img
+                        src="../public/img/right-arrow.svg"
+                        class="right-arrow"
+                        alt="Flecha a la derecha">
                 </div>
                 <header>
                     <div id="slider-text-content">
@@ -65,7 +101,7 @@
         </div>
     </section>
     <section style="min-height:100vh;"></section>
-    <section>
+    <section id="legado">
         <div class="grid full-height legado">
             <div class="container">
                 <h1>Un simple Legado</h1>
@@ -87,22 +123,26 @@
                 </p>
             </div>
         </div>
-        <section>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20096.935949119692!2d-76.05800817413252!3d1.8506988539524303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e250b7dba6f64ff%3A0x7a99e7b32e8fa32c!2sPitalito%2C+Huila!5e0!3m2!1ses-419!2sco!4v1529158390019" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </section>
-        <section>
-            <div class="grid social">
-                <div class="container">
-                    <p class="title">Sígueme. Escríbeme.</p>
-                    <a href="mailto:chrixz512@hotmail.com" class="btn">Email</a>
-                    <a href="https://github.com/csamboni" class="btn">Github</a>
-                    <a href="https://twitter.com/Cris_SamJS" class="btn" target="_blank">Twitter</a>
-                    <a
-                        href="https://www.facebook.com/CrisstianSambonii"
-                        class="btn"
-                        target="_blank">Facebook</a>
-                </div>
+    </section>
+
+    <section id="map">
+        <div id="mapa"></div>
+    </section>
+    <section id="contacto">
+        <div class="grid social">
+            <div class="container">
+                <p class="title">Sígueme. Escríbeme.</p>
+                <a href="mailto:chrixz512@hotmail.com" class="btn">Email</a>
+                <a href="https://github.com/csamboni" class="btn">Github</a>
+                <a href="https://twitter.com/Cris_SamJS" class="btn" target="_blank">Twitter</a>
+                <a
+                    href="https://www.facebook.com/CrisstianSambonii"
+                    class="btn"
+                    target="_blank">Facebook</a>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTIp5uDkcQueauMdIRhBaHku5DoGB6acA"></script>
+</body>
 </html>

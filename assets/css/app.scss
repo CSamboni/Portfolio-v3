@@ -7,10 +7,96 @@ html,body{
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0px;
 }
+figure:hover{}
 
 .grid{
     display: grid;
     grid-template-columns: repeat(12,1fr);
+}
+
+.menu {
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    @include transition;
+    border-radius: 60%;
+    transition-duration: 0.15s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $teal;
+    }
+
+    img {
+        height: 60px;
+    }
+}
+
+.menu-screen {
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 1001;
+    top:-101vh;
+    @include center-vertical-horizontal;
+    @include transition;
+
+    .exit {
+        position: absolute;
+        top: 2em;
+        right: 2em;
+        img {
+            height: 45px;
+        }
+    }
+
+    &.active {
+        top:0;
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        @include text-center;
+        position: relative;
+        margin-top: 1em;
+        &:first-of-type {margin-top:0; }
+        .main {
+            display: block;
+            font-size: 2em;
+            color: $teal;
+        }
+        span:not(.main){
+            color: $cyan;
+            opacity: 0;
+            @include transition;
+            transition-duration: 0.2s;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 1.2em;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $blue;
+            @include transition;
+            transition-duration: 0.2s;
+            transform: scale(0);
+        }
+        &:hover span.main{
+            color: black !important;
+        }
+        &:hover::after {
+        transform: scale(1);
+
+         }
+
+        &:hover span:not(.main){
+            opacity: 1;
+        }
+    }
 }
 .cursive {
     font-style: italic;
@@ -208,6 +294,13 @@ figure{
             }
         }
     }
+}
+#mapa {
+  width: 100%;
+  min-height: 600px;
+  margin-top: $big-margin-top;
+  z-index: -1;
+  position: relative;
 }
 //Cuentas & Social
 .social {
