@@ -1,33 +1,49 @@
 import Slider from './slider';
+import elements from './elements';
+import Preloader from '../preloader/preloader';
 
 let sliderText = document.querySelector("#slider-text");
 let sliderTitle = document.querySelector("#slider-title");
 let sliderSubTitle = document.querySelector("#slider-subtitle");
 let sliderImage = document.querySelector("#slider-image");
+let textContent = document.querySelector("#slider-text-content");
+
+let leftArrow = document.querySelector(".left-arrow");
+
+let rightArrow = document.querySelector(".right-arrow");
 
 let slider = new Slider({
-    elements: [
-        {
-            title: 'Lorem Ipsum',
-            subtitle: 'Ipsum',
-            image: '../../public/img/1.jpg',
-            text: 'En este proyecto, trabajamos el fundamento de la marca. Se desea dirigir al cliente para que incurra en la marca. Se adueñe.'
-        },
-        {
-            title: 'Lorem Ipsum 2',
-            subtitle: 'Ipsum 2',
-            image: '../../public/img/2.jpg',
-            text: 'En el segundo Test, trabajamos el fundamento de la marca. Se desea dirigir al cliente para que incurra en la marca. Se adueñe.'
-
-        }
-    ],
+    elements,
     animationFunc: function(element){
-        sliderTitle.innerHTML= element.title;
-        sliderImage.src = element.image;
-        sliderSubTitle.innerHTML = element.subtitle;
-        sliderText.innerHTML = element.text;
+
+        textContent.classList.add("hide");
+        sliderImage.classList.add("hide");
+
+        setTimeout(() => {
+            sliderTitle.innerHTML= element.title;
+            sliderImage.src = element.image;
+            sliderSubTitle.innerHTML = element.subtitle;
+            sliderText.innerHTML = element.text;
+
+            textContent.classList.remove("hide");
+            sliderImage.classList.remove("hide");
+
+        }, 600);
     },
-    speed: 3000
+    speed: 5000
 });
 
 slider.play();
+
+leftArrow.addEventListener('click', slider.prev);
+rightArrow.addEventListener('click', slider.next);
+
+
+const imagePaths = elements.map(el => el.image);
+
+Preloader.preloadImages({
+    images: imagePaths,
+    completed: function() {
+       document.querySelector(".controls").style.display = "block";
+    }
+})

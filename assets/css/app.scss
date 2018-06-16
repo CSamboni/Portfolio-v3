@@ -111,6 +111,30 @@ figure{
     }
 }
 .slider {
+    .controls {
+        text-align: right;
+        margin-bottom: 10px;
+        padding-right: 2em;
+        display: none;
+        .right-arrow,.left-arrow{
+            height: 70px;
+            @include transition;
+            transition-duration: 0.15s;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        .left-arrow {
+            margin-right: 1.5em;
+            transform: rotate(180deg);
+        }
+    }
+    .image {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
     header {
         background-color: rgba($teal, 0.8);
         color: $white;
@@ -119,6 +143,8 @@ figure{
         width: 90%;
         box-sizing: border-box;
         margin: 0 auto;
+        z-index:10;
+        position: relative;
         h2 {
             margin: 0px;
         }
@@ -138,6 +164,22 @@ figure{
             }
         }
     }
+}
+
+#slider-text-content {
+    @include transition;
+    &.hide {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+#slider-image {
+    @include transition;
+    &.hide {
+        opacity: 0;
+    }
+
 }
 
 .legado {
