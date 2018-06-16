@@ -25,11 +25,34 @@ self.addEventListener('fetch', function(ev){
     ev.respondWith(
         caches.match(ev.request)
         .then(function(response){
-
-            return response || fetch(ev.request);
+            return searchInCacheOrMakeRequest(ev.request);
         }).catch(function(){
             if(ev.request.mode == "navigate")
               return caches.match(ev.request);
         })
     );
 })
+
+function searchInCacheOrMakeRequest(request){
+    const cachePromise = caches.open(CACHE_NAME);
+    const matchPromise = cachePromise.then(function(){
+        cache.match(request);
+        return cache.match(request);
+    });
+
+
+    return Promise.all(cachePromise,matchPromise).then(function([cache,cacheReponse]){
+
+
+        const fetchPromise = fetch(request).then(function(fetchReponse){
+
+            cache.put(request,fecthReponse.clone());
+            return fetchReponse;
+
+        });
+        
+        return cacheResponse || fetchPromise;
+
+    });
+
+}
